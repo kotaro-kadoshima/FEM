@@ -1,0 +1,6 @@
+# IntelliJ IDEA関連
+.idea/
+# Maven成果物
+target/
+# OS依存ファイル
+.DS_Store
