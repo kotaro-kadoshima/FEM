@@ -1,0 +1,13 @@
+generatorName: spring
+inputSpec: /local/spec/FEM.openapi.json  # OpenAPI 定義ファイルのパス
+outputDir: /local/generated  # Docker内の一時出力ディレクトリ
+
+# 生成されるクラスのパッケージ指定
+apiPackage: com.kk.fem.openapi.gen.api  # API（コントローラー）クラスのパッケージ
+modelPackage: com.kk.fem.openapi.gen.model  # モデルクラスのパッケージ
+
+# 設定オプション
+interfaceOnly: true  # コントローラーのインターフェースのみ生成
+useSpringBoot3: true  # Spring Boot 3.x 用のコードを生成
+useTags: true  # OpenAPI の tags に基づいてクラスを分割
+openApiNullable: false  # Nullable アノテーション（例: @Nullable）を無効化
