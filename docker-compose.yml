@@ -1,0 +1,67 @@
+version: '3.9'
+
+services:
+  fem-app:
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: ./docker/java/Dockerfile
+    ports:
+      - "${APP_PORT}:8080"  # アプリケーションのメインポート
+      - "${DEBUG_PORT}:5005"  # デバッグ用のポート
+    networks:
+      - fem-net
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+
+  postgres:
+    image: postgres:16.3
+    container_name: fem-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - fem-postgres-data:/var/lib/postgresql/data
+      - ./postgres/initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - fem-net
+
+  pgadmin:
+    image: dpage/pgadmin4:8.8
+    container_name: fem-pgadmin
+    ports:
+      - "${PGADMIN_PORT}:80"  # PgAdminのWebインターフェースポート
+    volumes:
+      - fem-pgadmin4-data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    depends_on:
+      - postgres
+    networks:
+      - fem-net
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: fem-swagger-ui
+    ports:
+      - "8888:8080"  # Swagger UIのアクセス用ポート
+    environment:
+      SWAGGER_JSON: /swagger/openapi.yaml
+    volumes:
+      - ./openapi/spec/FEM.openapi.json:/swagger/openapi.json
+    networks:
+      - fem-net
+
+networks:
+  fem-net:
+
+volumes:
+  fem-postgres-data:
+  fem-pgadmin4-data:

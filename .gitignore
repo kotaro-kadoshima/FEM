@@ -4,3 +4,5 @@
 target/
 # OS依存ファイル
 .DS_Store
+# 環境変数
+.env
