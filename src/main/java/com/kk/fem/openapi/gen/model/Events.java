@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @JsonTypeName("events")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-02T13:28:51.840482375Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-09T22:54:12.765383677Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class Events {
 
   private String sysNo;
@@ -34,9 +34,9 @@ public class Events {
 
   private String eventEndDate;
 
-  private String eventStartTime;
+  private String eventStartTime = null;
 
-  private String eventEndTime;
+  private String eventEndTime = null;
 
   public Events() {
     super();

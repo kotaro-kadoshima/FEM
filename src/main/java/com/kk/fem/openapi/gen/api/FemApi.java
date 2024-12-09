@@ -25,7 +25,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 
 import java.util.Optional;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-02T13:28:51.840482375Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-09T22:54:12.765383677Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 @Validated
 @Tag(name = "FEM/ユーザ管理", description = "the FEM/ユーザ管理 API")
 public interface FemApi {
@@ -49,7 +49,7 @@ public interface FemApi {
         tags = { "FEM/ユーザ管理" },
         responses = {
             @ApiResponse(responseCode = "200", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = UserInsertPost200Response.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserAuthGet200Response.class))
             }),
             @ApiResponse(responseCode = "500", description = "", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserInsertPost500Response.class))
@@ -63,13 +63,13 @@ public interface FemApi {
         consumes = { "application/json" }
     )
     
-    default ResponseEntity<UserInsertPost200Response> userAuthGet(
+    default ResponseEntity<UserAuthGet200Response> userAuthGet(
         @Parameter(name = "UserAuthGetRequest", description = "") @Valid @RequestBody(required = false) UserAuthGetRequest userAuthGetRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"msg\" : \"msg\", \"result\" : [ \"{}\", \"{}\" ], \"msgId\" : \"msgId\" }";
+                    String exampleString = "{ \"msg\" : \"msg\", \"result\" : [ { \"logoutDt\" : \"logoutDt\", \"loginDt\" : \"loginDt\" }, { \"logoutDt\" : \"logoutDt\", \"loginDt\" : \"loginDt\" } ], \"msgId\" : \"msgId\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -137,29 +137,29 @@ public interface FemApi {
 
 
     /**
-     * GET /version : appバージョン
+     * GET /version/app : appバージョン
      * アプリケーションのバージョンを返却
      *
      * @return  (status code 200)
      */
     @Operation(
-        operationId = "versionGet",
+        operationId = "version",
         summary = "appバージョン",
         description = "アプリケーションのバージョンを返却",
         tags = { "FEM" },
         responses = {
             @ApiResponse(responseCode = "200", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = VersionGet200Response.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Version200Response.class))
             })
         }
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/version",
+        value = "/version/app",
         produces = { "application/json" }
     )
     
-    default ResponseEntity<VersionGet200Response> versionGet(
+    default ResponseEntity<Version200Response> version(
         
     ) {
         getRequest().ifPresent(request -> {

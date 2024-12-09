@@ -9,76 +9,30 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
- * UserAuthGetRequest
+ * UserAuthGet200ResponseResultInner
  */
 
-@JsonTypeName("_user_auth_get_request")
+@JsonTypeName("_user_auth_get_200_response_result_inner")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-09T22:54:12.765383677Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
-public class UserAuthGetRequest {
-
-  private String userId;
-
-  private String userPass;
+public class UserAuthGet200ResponseResultInner {
 
   private String loginDt;
 
   private String logoutDt;
 
-  public UserAuthGetRequest() {
+  public UserAuthGet200ResponseResultInner() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public UserAuthGetRequest(String userId, String userPass, String loginDt, String logoutDt) {
-    this.userId = userId;
-    this.userPass = userPass;
+  public UserAuthGet200ResponseResultInner(String loginDt, String logoutDt) {
     this.loginDt = loginDt;
     this.logoutDt = logoutDt;
   }
 
-  public UserAuthGetRequest userId(String userId) {
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * ユーザID
-   * @return userId
-   */
-  @NotNull 
-  @Schema(name = "userId", description = "ユーザID", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("userId")
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
-
-  public UserAuthGetRequest userPass(String userPass) {
-    this.userPass = userPass;
-    return this;
-  }
-
-  /**
-   * パスワード（登録時はハッシュ値に変換）
-   * @return userPass
-   */
-  @NotNull 
-  @Schema(name = "userPass", description = "パスワード（登録時はハッシュ値に変換）", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("userPass")
-  public String getUserPass() {
-    return userPass;
-  }
-
-  public void setUserPass(String userPass) {
-    this.userPass = userPass;
-  }
-
-  public UserAuthGetRequest loginDt(String loginDt) {
+  public UserAuthGet200ResponseResultInner loginDt(String loginDt) {
     this.loginDt = loginDt;
     return this;
   }
@@ -98,7 +52,7 @@ public class UserAuthGetRequest {
     this.loginDt = loginDt;
   }
 
-  public UserAuthGetRequest logoutDt(String logoutDt) {
+  public UserAuthGet200ResponseResultInner logoutDt(String logoutDt) {
     this.logoutDt = logoutDt;
     return this;
   }
@@ -126,24 +80,20 @@ public class UserAuthGetRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserAuthGetRequest userAuthGetRequest = (UserAuthGetRequest) o;
-    return Objects.equals(this.userId, userAuthGetRequest.userId) &&
-        Objects.equals(this.userPass, userAuthGetRequest.userPass) &&
-        Objects.equals(this.loginDt, userAuthGetRequest.loginDt) &&
-        Objects.equals(this.logoutDt, userAuthGetRequest.logoutDt);
+    UserAuthGet200ResponseResultInner userAuthGet200ResponseResultInner = (UserAuthGet200ResponseResultInner) o;
+    return Objects.equals(this.loginDt, userAuthGet200ResponseResultInner.loginDt) &&
+        Objects.equals(this.logoutDt, userAuthGet200ResponseResultInner.logoutDt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, userPass, loginDt, logoutDt);
+    return Objects.hash(loginDt, logoutDt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserAuthGetRequest {\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    userPass: ").append(toIndentedString(userPass)).append("\n");
+    sb.append("class UserAuthGet200ResponseResultInner {\n");
     sb.append("    loginDt: ").append(toIndentedString(loginDt)).append("\n");
     sb.append("    logoutDt: ").append(toIndentedString(logoutDt)).append("\n");
     sb.append("}");

@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @JsonTypeName("users")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-02T13:28:51.840482375Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-09T22:54:12.765383677Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class Users {
 
   private String sysNo;
@@ -34,6 +34,10 @@ public class Users {
 
   private String userMail;
 
+  private String loginDt;
+
+  private String logoutDt;
+
   public Users() {
     super();
   }
@@ -41,7 +45,7 @@ public class Users {
   /**
    * Constructor with only required parameters
    */
-  public Users(String sysNo, String insertDt, String updateDt, String insertUser, String updateUser, String userId, String userPass, String userNm, String userMail) {
+  public Users(String sysNo, String insertDt, String updateDt, String insertUser, String updateUser, String userId, String userPass, String userNm, String userMail, String loginDt, String logoutDt) {
     this.sysNo = sysNo;
     this.insertDt = insertDt;
     this.updateDt = updateDt;
@@ -51,6 +55,8 @@ public class Users {
     this.userPass = userPass;
     this.userNm = userNm;
     this.userMail = userMail;
+    this.loginDt = loginDt;
+    this.logoutDt = logoutDt;
   }
 
   public Users sysNo(String sysNo) {
@@ -233,6 +239,46 @@ public class Users {
     this.userMail = userMail;
   }
 
+  public Users loginDt(String loginDt) {
+    this.loginDt = loginDt;
+    return this;
+  }
+
+  /**
+   * ログイン日時（yyyymmddHHmmss形式）
+   * @return loginDt
+   */
+  @NotNull 
+  @Schema(name = "loginDt", description = "ログイン日時（yyyymmddHHmmss形式）", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("loginDt")
+  public String getLoginDt() {
+    return loginDt;
+  }
+
+  public void setLoginDt(String loginDt) {
+    this.loginDt = loginDt;
+  }
+
+  public Users logoutDt(String logoutDt) {
+    this.logoutDt = logoutDt;
+    return this;
+  }
+
+  /**
+   * ログアウト日時（yyyymmddHHmmss形式）
+   * @return logoutDt
+   */
+  @NotNull 
+  @Schema(name = "logoutDt", description = "ログアウト日時（yyyymmddHHmmss形式）", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("logoutDt")
+  public String getLogoutDt() {
+    return logoutDt;
+  }
+
+  public void setLogoutDt(String logoutDt) {
+    this.logoutDt = logoutDt;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -250,12 +296,14 @@ public class Users {
         Objects.equals(this.userId, users.userId) &&
         Objects.equals(this.userPass, users.userPass) &&
         Objects.equals(this.userNm, users.userNm) &&
-        Objects.equals(this.userMail, users.userMail);
+        Objects.equals(this.userMail, users.userMail) &&
+        Objects.equals(this.loginDt, users.loginDt) &&
+        Objects.equals(this.logoutDt, users.logoutDt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sysNo, insertDt, updateDt, insertUser, updateUser, userId, userPass, userNm, userMail);
+    return Objects.hash(sysNo, insertDt, updateDt, insertUser, updateUser, userId, userPass, userNm, userMail, loginDt, logoutDt);
   }
 
   @Override
@@ -271,6 +319,8 @@ public class Users {
     sb.append("    userPass: ").append(toIndentedString(userPass)).append("\n");
     sb.append("    userNm: ").append(toIndentedString(userNm)).append("\n");
     sb.append("    userMail: ").append(toIndentedString(userMail)).append("\n");
+    sb.append("    loginDt: ").append(toIndentedString(loginDt)).append("\n");
+    sb.append("    logoutDt: ").append(toIndentedString(logoutDt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

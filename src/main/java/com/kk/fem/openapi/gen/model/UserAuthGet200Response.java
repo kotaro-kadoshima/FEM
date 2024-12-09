@@ -12,34 +12,34 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * UserInsertPost200Response
+ * UserAuthGet200Response
  */
 
-@JsonTypeName("_user_insert_post_200_response")
+@JsonTypeName("_user_auth_get_200_response")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-12-09T22:54:12.765383677Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
-public class UserInsertPost200Response {
+public class UserAuthGet200Response {
 
   private String msgId;
 
   private String msg;
 
   @Valid
-  private List<Object> result = new ArrayList<>();
+  private List<@Valid UserAuthGet200ResponseResultInner> result = new ArrayList<>();
 
-  public UserInsertPost200Response() {
+  public UserAuthGet200Response() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public UserInsertPost200Response(String msgId, String msg, List<Object> result) {
+  public UserAuthGet200Response(String msgId, String msg, List<@Valid UserAuthGet200ResponseResultInner> result) {
     this.msgId = msgId;
     this.msg = msg;
     this.result = result;
   }
 
-  public UserInsertPost200Response msgId(String msgId) {
+  public UserAuthGet200Response msgId(String msgId) {
     this.msgId = msgId;
     return this;
   }
@@ -59,7 +59,7 @@ public class UserInsertPost200Response {
     this.msgId = msgId;
   }
 
-  public UserInsertPost200Response msg(String msg) {
+  public UserAuthGet200Response msg(String msg) {
     this.msg = msg;
     return this;
   }
@@ -79,12 +79,12 @@ public class UserInsertPost200Response {
     this.msg = msg;
   }
 
-  public UserInsertPost200Response result(List<Object> result) {
+  public UserAuthGet200Response result(List<@Valid UserAuthGet200ResponseResultInner> result) {
     this.result = result;
     return this;
   }
 
-  public UserInsertPost200Response addResultItem(Object resultItem) {
+  public UserAuthGet200Response addResultItem(UserAuthGet200ResponseResultInner resultItem) {
     if (this.result == null) {
       this.result = new ArrayList<>();
     }
@@ -96,14 +96,14 @@ public class UserInsertPost200Response {
    * 処理結果
    * @return result
    */
-  @NotNull 
+  @NotNull @Valid 
   @Schema(name = "result", description = "処理結果", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("result")
-  public List<Object> getResult() {
+  public List<@Valid UserAuthGet200ResponseResultInner> getResult() {
     return result;
   }
 
-  public void setResult(List<Object> result) {
+  public void setResult(List<@Valid UserAuthGet200ResponseResultInner> result) {
     this.result = result;
   }
 
@@ -115,10 +115,10 @@ public class UserInsertPost200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserInsertPost200Response userInsertPost200Response = (UserInsertPost200Response) o;
-    return Objects.equals(this.msgId, userInsertPost200Response.msgId) &&
-        Objects.equals(this.msg, userInsertPost200Response.msg) &&
-        Objects.equals(this.result, userInsertPost200Response.result);
+    UserAuthGet200Response userAuthGet200Response = (UserAuthGet200Response) o;
+    return Objects.equals(this.msgId, userAuthGet200Response.msgId) &&
+        Objects.equals(this.msg, userAuthGet200Response.msg) &&
+        Objects.equals(this.result, userAuthGet200Response.result);
   }
 
   @Override
@@ -129,7 +129,7 @@ public class UserInsertPost200Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserInsertPost200Response {\n");
+    sb.append("class UserAuthGet200Response {\n");
     sb.append("    msgId: ").append(toIndentedString(msgId)).append("\n");
     sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
