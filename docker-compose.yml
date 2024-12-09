@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   fem-app:
     depends_on:
@@ -51,9 +49,9 @@ services:
     image: swaggerapi/swagger-ui
     container_name: fem-swagger-ui
     ports:
-      - "8888:8080"  # Swagger UIのアクセス用ポート
+      - "${SWAGGER_UI_PORT}:8080"  # Swagger UIのアクセス用ポート
     environment:
-      SWAGGER_JSON: /swagger/openapi.yaml
+      SWAGGER_JSON: /swagger/openapi.json
     volumes:
       - ./openapi/spec/FEM.openapi.json:/swagger/openapi.json
     networks:
